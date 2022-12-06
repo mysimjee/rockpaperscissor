@@ -123,3 +123,8 @@ function increasescore() {
         p2s.innerText = score2.scorenumber
     }
 }
+
+document.getElementById("reset").addEventListener('click', reset)
+function reset() {  
+    window.location.reload()
+}
