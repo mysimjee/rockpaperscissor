@@ -7,6 +7,15 @@ class player {
     }
 }
 
+class score {
+    constructor() {
+        this.scorenumber = 0
+    }
+}
+
+let score1 = new score()
+let score2 = new score()
+
 let person1 = new player("Player 1", "Undecided")
 document.getElementById('rock').addEventListener("click", assignrock)
 document.getElementById('paper').addEventListener("click", assignpaper)
@@ -69,26 +78,48 @@ function play() {
     if (person1.move == person2.move) {
         winner = "Tie"
         result.innerHTML = brk + wa + winner
-
     } else if (person1.move == "Rock" && person2.move =="Paper") {
         winner = "Player 2"
         result.innerHTML = brk + wa + winner
+        increasescore()
     } else if (person1.move == "Rock" && person2.move =="Scissor") {
         winner = "Player 1"
         result.innerHTML = brk + wa + winner
         player1won.play()
+        increasescore()
+
     } else if (person1.move == "Paper" && person2.move =="Rock") {
         winner = "Player 2"
         result.innerHTML = brk + wa + winner
+        increasescore()
+
     } else if (person1.move == "Paper" && person2.move =="Scissor") {
         winner = "Player 2"
         result.innerHTML = brk + wa + winner
+        increasescore()
+
     } else if (person1.move == "Scissor" && person2.move =="Rock") {
         winner = "Player 2"
         result.innerHTML = brk + wa + winner
+        increasescore()
+
     } else if (person1.move == "Scissor" && person2.move =="Paper") {
         winner = "Player 1"
         result.innerHTML = brk + wa + winner
+        increasescore()
     }
     return (winner)
+}
+
+function increasescore() {
+    if (winner == "Player 1") {
+        let p1s = document.getElementById('playeronescore')
+        score1.scorenumber += 1
+        p1s.innerText = score1.scorenumber
+
+    } else if (winner == "Player 2") {
+        let p2s = document.getElementById('playertwoscore')
+        score2.scorenumber += 1
+        p2s.innerText = score2.scorenumber
+    }
 }

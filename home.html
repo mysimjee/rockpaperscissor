@@ -25,11 +25,24 @@
                 <span id="paperb2"><button id="paper2" class="btn btn-info btn-square-md" value="Paper">🤚</button></span>
                 <span id="siccsorb2"><button id="scissor2" class="btn btn-info btn-square-md" value="Scissor">✌</button></span>
             </div>
+            <div class="row">
+                <div class="col">
+                    <span class="counter display-3 text-dark d-block" id="playeronescore">0</span>
+                    <span class="h5 text-gray">Player 1 (Score)</span>
+                </div>
+
+                <div class="col">
+                    <span class="counter display-3 text-dark d-block" id="playertwoscore">0</span>
+                    <span class="h5 text-gray">Player 2(Score)</span>
+                </div>
+            </div>
         </div>
         <div class="row">
             <p class="text-center" id="whowin" onclick="play()"><br><br>Who Win: Undecided</p>
         </div>
     </div>
+
+    
 
     <audio controls="controls" id="player1won" src="laugh.wav" type="audio/mp3"></audio>
 </body>
