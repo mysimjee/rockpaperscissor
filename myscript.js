@@ -28,6 +28,7 @@ document.getElementById('paper2').addEventListener("click", assignpaper1)
 document.getElementById('scissor2').addEventListener("click", assignscissor1)
 
 
+
 function assignrock() {
     let rock = document.getElementById('rock').value
     person1.move = rock
@@ -127,4 +128,73 @@ function increasescore() {
 document.getElementById("reset").addEventListener('click', reset)
 function reset() {  
     window.location.reload()
+}
+
+
+function computerchoice() {  
+    let availablechoices = ["Rock", "Paper", "Scissor"]
+    let computerchoices = availablechoices[Math.floor(Math.random() * availablechoices.length)]
+    return computerchoices
+}
+
+let computerplayer = new player("Computer", "Paper")
+let hhour = document.getElementById("hour")
+let ssecond = document.getElementById("second")
+let mminute = document.getElementById("minute")
+let hour = 0
+let minute = 0
+let second = 0
+let startcounting = true
+let countup = [hour, minute, second]
+console.log(setInterval(timer, 1000))
+function timer() {
+    if (startcounting) {
+        second++
+        ssecond.innerText = second
+        if (second == 60) {
+            minute++
+            second = 0
+            mminute.innerText = minute + ':'
+        }
+
+        if (minute == 60) {
+            hour++
+            minute = 0
+            hhour.innerText = hour + ':'
+        }
+
+    }
+    return console.log(second, minute, hour)
+}
+
+
+
+function computerplay() {
+    switch (computerplayer.move) {
+        case "Rock":
+            if (person1.move == "Rock") {
+                winner = "Tie"
+                console.log(winner)
+            } else if (person1.move == "Paper") {
+                winner = "Player 1"
+                console.log(winner)
+            } else if (person1.move == "Scissor") {
+                winner = "Computer"
+                console.log(winner)
+            };
+
+        case "Paper":
+            if (person1.move == "Rock") {
+                winner = computerplayer.names
+                console.log(winner)
+            } else if (person1.move == "Paper") {
+                winner = "Tie"
+                console.log(winner)
+            } else if (person1.move == "scissor") {
+                winner = "Player 1"
+                console.log(winner)
+            };
+
+
+    }
 }
