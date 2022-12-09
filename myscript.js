@@ -13,6 +13,7 @@ class score {
     }
 }
 
+
 let score1 = new score()
 let score2 = new score()
 
@@ -125,10 +126,7 @@ function increasescore() {
     }
 }
 
-document.getElementById("reset").addEventListener('click', reset)
-function reset() {  
-    window.location.reload()
-}
+
 
 
 function computerchoice() {  
@@ -146,11 +144,12 @@ let minute = 0
 let second = 0
 let startcounting = true
 let countup = [hour, minute, second]
-console.log(setInterval(timer, 1000))
-function timer() {
+let timer = async function timer() {
     if (startcounting) {
         second++
         ssecond.innerText = second
+
+
         if (second == 60) {
             minute++
             second = 0
@@ -164,8 +163,35 @@ function timer() {
         }
 
     }
-    return console.log(second, minute, hour)
+
 }
+
+let checktimer = new Promise (function(resolve, reject) {
+    let x= "Timer Reset"
+    let y = "Timer Failed"
+    if (startcounting) {
+        resolve(x)
+    } else {
+        reject(y)
+    }
+})
+
+document.getElementById("reset").addEventListener('click', reset)
+function reset() {  
+    window.location.reload()
+    checktimer.then(
+        function(value) {
+            window.alert(value +  "\n" + "Click Ok to Start Game")
+        }
+    ).catch(
+        function(value) {
+            window.alert(value)
+        }
+    )
+}
+
+setInterval(timer, 1000)
+
 
 
 
