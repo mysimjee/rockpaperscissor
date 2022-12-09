@@ -181,6 +181,9 @@ function reset() {
     window.location.reload()
     checktimer.then(
         function(value) {
+            second = 0
+            hour = 0
+            minute = 0
             window.alert(value +  "\n" + "Click Ok to Start Game")
         }
     ).catch(
